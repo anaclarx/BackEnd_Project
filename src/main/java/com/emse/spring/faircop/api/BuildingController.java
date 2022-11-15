@@ -35,7 +35,6 @@ public class BuildingController {
 
     @PostMapping // (8)
     public BuildingDto create(@RequestBody BuildingDto dto) {
-        // On creation id is not defined
         Building building = null;
         if (dto.getId() == null) {
             building = buildingDao.save(new Building(dto.getName()));

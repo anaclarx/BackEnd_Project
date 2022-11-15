@@ -37,6 +37,14 @@ public class SecurityControllerTest {
 
     @MockBean
     private RoomDao roomDao;
+
+    private Window createWindow(String s) {
+        Building building = new Building("Building1");
+        Room room= new Room( 1, "Room 1", building);
+        Window window = new Window (s, WindowStatus.OPEN, room);
+        return window;
+    }
+
     @Test
     @WithMockUser(username = "admin", roles = {"USER","ADMIN"})
     void shouldLoadAWindowAndReturnNullIfNotFound() throws Exception {
@@ -57,11 +65,5 @@ public class SecurityControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("Window1"))
                 .andExpect(jsonPath("$.windowStatus").value("CLOSED"));
-    }
-    private Window createWindow(String s) {
-        Building building = new Building("Building1");
-        Room room= new Room( 1, "Room 1", building);
-        Window window = new Window (s, WindowStatus.OPEN, room);
-        return window;
     }
 }
