@@ -27,10 +27,10 @@ public class Room {
     private Double targetTemperature;
 
     @OneToMany(mappedBy = "room")
-    private Set<Heater> heater;
+    private List<Heater> heater;
 
     @OneToMany(mappedBy = "room")
-    private Set<Window> windows;
+    private List<Window> windows;
 
     @ManyToOne //child of Building
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -66,7 +66,7 @@ public class Room {
         this.name = name;
     }
 
-    public Set<Window> getWindows() { return windows;}
+    public List<Window> getWindows() { return windows;}
 
     public Long getId() {
         return this.id;
