@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.emse.spring.faircop.hello.GreetingServiceTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-15T15:52:50" hostname="MacBook-Pro-de-Ana.local" time="0.003">
+<testsuite name="com.emse.spring.faircop.hello.GreetingServiceTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-15T16:08:51" hostname="MacBook-Pro-de-Ana.local" time="0.003">
   <properties/>
   <testcase name="testGreeting(CapturedOutput)" classname="com.emse.spring.faircop.hello.GreetingServiceTests" time="0.003"/>
   <system-out><![CDATA[Hello, Spring!
