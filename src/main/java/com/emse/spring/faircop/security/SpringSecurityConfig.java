@@ -1,6 +1,7 @@
 package com.emse.spring.faircop.security;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -12,10 +13,14 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+@Configuration
 public class SpringSecurityConfig {
     private static final String ROLE_USER = "USER";
     private static final String ROLE_ADMIN = "ADMIN";
 
+    protected void configure(HttpSecurity http) throws Exception{
+        http.cors().and().csrf().disable();
+    }
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -25,7 +30,7 @@ public class SpringSecurityConfig {
                 User.withUsername("user").password(encoder.encode("password")).roles(ROLE_USER).build()
         );
         manager.createUser(
-                User.withUsername("admin").password(encoder.encode("admin")).roles(ROLE_ADMIN).build()
+                User.withUsername("admin").password(encoder.encode("adminPassword")).roles(ROLE_ADMIN).build()
         );
         return manager;
     }
